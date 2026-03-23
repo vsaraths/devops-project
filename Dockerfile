@@ -10,9 +10,9 @@ WORKDIR /app
 COPY . .
 
 #INSTALL DEPENDENCIES
-RUN pip install -no-cache-dir flask
+RUN pip install --no-cache-dir flask
 
-swithc user
+#swithc user
 USER appuser
 
 #expose port
