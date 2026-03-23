@@ -7,7 +7,7 @@ RUN useradd -M appuser
 WORKDIR /app
 
 #COPY Files
-COPY ./app
+COPY . .
 
 #INSTALL DEPENDENCIES
 RUN pip install -no-cache-dir flask
