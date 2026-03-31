@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 #CREATE NON ROOT USER
-RUN useradd -M appuser
+#RUN useradd -M appuser
 
 # set work directory
 WORKDIR /app
@@ -14,7 +14,7 @@ COPY . .
 RUN pip install --no-cache-dir flask
 
 #swithc user
-USER appuser
+#USER appuser
 
 #expose port
 EXPOSE 5000
