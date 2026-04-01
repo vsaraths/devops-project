@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 #CREATE NON ROOT USER
-useradd -m appuser
+RUN useradd -m appuser
 RUN chown -R appuser  /app
 USER appuser
 
