@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arcadex-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: arcadex
+  template:
+    metadata:
+      labels:
+        app: arcadex
+    spec:
+      containers:
+      - name: arcadex-container
+        image: vsarath732/arcadex-health-api:latest
+        ports:
+        - containerPort: 5000
+
+        imagePullPolicy: Always
+
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5
