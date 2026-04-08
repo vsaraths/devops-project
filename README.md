@@ -1,88 +1,202 @@
-# DevOps Project: Production-Grade CI/CD Pipeline for Flask Application
+# 🚀 Arcadex DevOps Project: Production-Grade CI/CD Pipeline
+
+---
 
 ## 📌 Project Overview
 
-This is a production-oriented DevOps project where we design and implement a CI/CD pipeline for a containerized Flask application.
+This project demonstrates a **production-style DevOps pipeline** for a containerized Flask application using Jenkins, Docker, and Kubernetes.
 
-The goal is to simulate a real-world environment where application builds, testing, and deployments are automated to ensure reliability, consistency, and faster delivery.
+The goal is to simulate a real-world environment where builds, testing, and deployments are **fully automated**, ensuring high availability, consistency, and faster delivery.
 
 ---
 
 ## 🏢 Company Scenario
 
-Assume you are working as a DevOps Engineer at **ArcadeX Studios**, a gaming company that develops and operates multiplayer online games.
+Assume you are working as a **DevOps Engineer at Arcadex Studios**, a gaming company that builds and operates multiplayer online games.
 
-ArcadeX runs multiple backend services that handle:
-- player sessions  
-- matchmaking  
-- leaderboards  
-- analytics  
+Arcadex runs backend services responsible for:
 
-These services must be highly available because any downtime directly impacts player experience and revenue.
+- 🎮 Player sessions  
+- ⚔️ Matchmaking  
+- 🏆 Leaderboards  
+- 📊 Analytics  
+
+These services must be **highly available**, as downtime directly impacts user experience and revenue.
 
 ---
 
 ## 🎫 Task / Requirement
 
-You have been assigned a ticket with the following requirement:
+You were assigned the following task:
 
-> Build a CI/CD pipeline for a lightweight backend service that exposes application health and version information.  
-> This service will be used for deployment validation, monitoring, and load balancer health checks.
+> Build a CI/CD pipeline for a lightweight backend service that exposes application health and version information.
+
+This service will be used for:
+
+- Deployment validation  
+- Monitoring  
+- Load balancer health checks  
 
 ---
 
-## 🎯 What needs to be done
+## 🧠 Architecture
 
-As a DevOps Engineer, your responsibilities include:
+```
+GitHub → Webhook → Jenkins → Docker Build → Docker Hub → Kubernetes → Live Application
+```
 
-- Develop a Flask-based backend service  
-- Containerize the application using Docker  
-- Design a CI/CD pipeline using Jenkins  
-- Ensure automated testing before deployment  
-- Deploy the application safely  
-- Validate deployment using a health-check endpoint  
+---
+
+## 🔄 CI/CD Workflow
+
+1. Developer pushes code to GitHub  
+2. GitHub Webhook triggers Jenkins pipeline  
+3. Jenkins builds Docker image  
+4. Docker image is pushed to Docker Hub  
+5. Jenkins updates Kubernetes deployment  
+6. Kubernetes pulls latest image  
+7. Application is deployed automatically  
+
+---
+
+## ⚙️ Tech Stack
+
+- **Cloud:** AWS EC2  
+- **CI/CD:** Jenkins  
+- **Containerization:** Docker  
+- **Orchestration:** Kubernetes (KIND)  
+- **Registry:** Docker Hub  
+- **Version Control:** GitHub  
+- **Language:** Python  
+- **Framework:** Flask  
+
+---
+
+## ☸️ Kubernetes Deployment
+
+- **Deployment:** Manages application pods  
+- **Service:** Exposes application using NodePort  
+- **Self-healing:** Pods automatically restart on failure  
+- **Rolling updates:** Zero-downtime deployments  
+
+---
+
+## 🌐 Application Endpoints
+
+- `/health` → Returns service health status  
+- `/` → Returns basic application info  
+
+---
+
+## 🔥 Key Features
+
+- Fully automated CI/CD pipeline  
+- Dockerized Flask application  
+- Multi-instance architecture (Jenkins + Kubernetes on separate EC2 instances)  
+- Kubernetes-based deployment  
+- Auto deployment on git push  
+- Health-check based validation  
+- Self-healing infrastructure  
+- Versioned Docker image deployment  
+
+---
+
+## ⚠️ Challenges & Solutions
+
+### 🔧 Docker permission issue in Jenkins
+- Issue: Jenkins could not access Docker daemon  
+- Fix: Added Jenkins container to Docker group  
+
+### 🔧 Kubernetes ImagePullBackOff
+- Issue: Incorrect image name/tag  
+- Fix: Corrected Docker Hub repository and tags  
+
+### 🔧 KIND networking issue
+- Issue: Application not accessible externally  
+- Fix: Configured extraPortMappings in KIND cluster  
+
+### 🔧 Cross-instance communication
+- Issue: Jenkins and Kubernetes running on different EC2 instances  
+- Fix: Configured kubeconfig and kubectl access  
+
+### 🔧 kubectl not found in Jenkins
+- Issue: Jenkins pipeline failed during deployment  
+- Fix: Installed kubectl inside Jenkins container  
+
+---
+
+## 📂 Project Structure
+
+```
+.
+├── app.py
+├── Dockerfile
+├── Jenkinsfile
+├── deployment.yaml
+├── service.yaml
+├── README.md
+```
+
+---
+
+## 🚀 How to Run (High-Level)
+
+1. Clone repository  
+2. Set up Jenkins  
+3. Configure Docker  
+4. Deploy Kubernetes cluster (KIND)  
+5. Configure webhook  
+6. Push code to trigger pipeline  
+
+---
+
+## 🌍 Live Application
+
+```
+http://<YOUR-EC2-PUBLIC-IP>:30007/health
+```
 
 ---
 
 ## 🧠 What is Flask?
 
-Flask is a lightweight Python web framework used to build backend applications and APIs.
+Flask is a lightweight Python web framework used to build backend services and APIs.
 
 It allows developers to:
-- create HTTP endpoints  
-- handle requests and responses  
-- build microservices quickly  
+
+- Create HTTP endpoints  
+- Handle requests and responses  
+- Build microservices quickly  
 
 ---
 
-## 🌍 Real-World Purpose of Flask
+## 🎮 Flask in Arcadex (Use Case)
 
-Flask is widely used in production for:
+In Arcadex, Flask is used to build small backend services.
 
-- building REST APIs  
-- creating microservices  
-- internal tools and automation services  
-- ML model serving APIs  
+In this project, Flask is used to create a **Health Check Service**:
 
----
-
-## 🎮 Flask in ArcadeX (Our Use Case)
-
-In ArcadeX, Flask is used to build small, independent backend services.
-
-In this project, Flask is used to create a **Health Check Service**, which:
-
-- provides a `/health` endpoint to verify if the service is running  
-- helps CI/CD pipelines validate deployments  
-- allows load balancers to route traffic only to healthy instances  
+- Provides `/health` endpoint  
+- Validates deployments in CI/CD  
+- Helps load balancers route traffic  
 
 ---
 
-## 🚀 Outcome
+## 🎯 Outcome
 
-By completing this project, we will have:
+By completing this project, we achieved:
 
-- a working Flask application  
-- a Dockerized service  
-- an automated CI/CD pipeline  
-- a production-style deployment workflow  
+- A working Flask application  
+- A Dockerized service  
+- A fully automated CI/CD pipeline  
+- Kubernetes-based deployment  
+- Production-style DevOps workflow  
+
+---
+
+## 👨‍💻 Author
+
+**Sarath V**  
+DevOps Engineer | Cloud Enthusiast  
+
+---
