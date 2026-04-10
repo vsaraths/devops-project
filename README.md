@@ -1,6 +1,8 @@
 # 🚀 Arcadex DevOps Project: Production-Grade CI/CD Pipeline
 
 ---
+<img width="1536" height="1024" alt="ChatGPT Image Apr 10, 2026, 05_39_11 PM" src="https://github.com/user-attachments/assets/7662ebf5-ac92-45df-b8b5-958c375d2b4d" />
+
 
 ## 📌 Project Overview
 
